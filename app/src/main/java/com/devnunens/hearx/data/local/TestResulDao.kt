@@ -10,6 +10,6 @@ interface TestResultDao {
     @Insert
     suspend fun insert(result: TestResultEntity)
 
-    @Query("SELECT * FROM test_results ORDER BY score DESC")
+    @Query("SELECT * FROM test_results ORDER BY timestamp DESC")
     fun getAllResults(): Flow<List<TestResultEntity>>
 }
