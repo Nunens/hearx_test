@@ -17,6 +17,10 @@ class TestPlayer(context: Context) {
     private val player = ExoPlayer.Builder(context).build()
     private val dataSourceFactory = DefaultDataSource.Factory(context)
 
+    // I had a lot of issues understanding how to play multiple audio files in sequence using ExoPlayer.
+    // The official documentation is quite sparse on this topic, so I had to piece together information
+    // from various sources, including GitHub issues and Stack Overflow.
+    // The key was to use ConcatenatingMediaSource to queue up multiple audio files and manage playback.
     @OptIn(UnstableApi::class)
     suspend fun playTriplet(difficulty: Int, triplet: List<Int>) {
         withContext(coroutineContext) {
